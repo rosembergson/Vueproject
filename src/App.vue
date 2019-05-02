@@ -20,13 +20,15 @@
       
         <h1> Componente escolhido </h1>
         
-        <button @click="compselect = 'Comp1'">Componente 1</button>
-        <button @click="compselect = 'Comp2'">Componente 2</button>
-        <button @click="compselect = 'Comp3'">Componente 3</button>
-        {{compselect}}
-    
-        <component :is = "compselect"> </component>
+        <button @click="compselect = 'Comp1'"> Componente 1 </button>
+        <button @click="compselect = 'Comp2'"> Componente 2 </button>
+        <button @click="compselect = 'Comp3'"> Componente 3 </button>
+        <button @click="compselect = 'Assincrono'"> Assincrono </button>
         
+        {{compselect}}
+        <div class="appcomponbg">
+        <component :is = "compselect"> </component>
+        </div>
     
     </section>
 
@@ -51,6 +53,17 @@
 export default {
 
   components: {
+    Assincrono: () => ({
+        loading: { template: '<p> e agora </p>' },
+        error: { template: '<p> Erro ao carregar component! </p>' },
+        delay:200,
+        timeout: 3000,
+        component: new Promise((resolve,reject) =>{
+          setTimeout(()=>{
+            resolve(import('./components/Assincrono.vue'))
+          },2000)
+        }),
+      }),
     'Header' : Header,
     'main2' : Main2,
     'main1' : Main1,
@@ -59,9 +72,9 @@ export default {
     'list' : List,
     'footer1' : Footer,
     'showcard' : ShowCard,
-     Comp1,
-     Comp2,
-     Comp3
+    Comp1,
+    Comp2,
+    Comp3
 
   },
   data(){
@@ -101,7 +114,10 @@ export default {
 .section4_bg{
   
 }
-
+.appcomponbg{
+  width:100%;
+  height:500px;
+}
 showcard{
   width:100%;
 }

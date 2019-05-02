@@ -1,18 +1,23 @@
 <template>
 <div>
     <div class="componente1bg">
-        <form action="POST">
-            <label> Nome <input type="text" v-model="desenvolvedor.name"></label>
-            <label> Sobrenome <input type="text" v-model="desenvolvedor.sobrenome"></label>
-            <label> Email <input type="email" v-model="desenvolvedor.email"></label>
-            <label> Idade <input type="text" v-model="desenvolvedor.idade"></label>
+        <!-- Escolha o button para renderizar seu componente -->
+
+        <!--  Form principal -->
+        <form action="POST" class="componente1bg_form">
+            <label> Nome: <input class="form--inp" type="text" v-model="desenvolvedor.name"></label>
+            <label> Sobrenome: <input class="form--inp" type="text" v-model="desenvolvedor.sobrenome"></label>
+            <label> Email: <input class="form--inp" type="email" v-model="desenvolvedor.email"></label>
+            <label> Idade: <input class="form--inp" type="text" v-model="desenvolvedor.idade"></label>
             <label> Gênero: 
                 <input type="radio" name="gender" value="male"> Male
                 <input type="radio" name="gender" value="female"> Female
             </label>
-            <label>
+
+            <label class="componente1bg_labellast">
             Cidade: 
-                <select v-model="desenvolvedor.cidade">
+                <select v-model="desenvolvedor.cidade" class="form--select" name="Select" >
+                    <option value="Select" selected> --- </option>
                     <option value="Canindé">Canindé</option>
                     <option value="Caridade">Caridade</option>
                     <option value="Quixadá">Quixadá</option>
@@ -20,7 +25,9 @@
                     <option value="Paramoti">Paramoti</option>
                     <option value="Barbalha">Barbalha</option>
                     <option value="Fortaleza">Fortaleza</option>    
-                </select> </label>
+                </select> 
+            </label>
+            <button class="button1bg"> Envia </button>
         </form>
     </div>
 </div>
@@ -45,5 +52,5 @@ export default {
 </script>
 
 <style lang="scss">
-    
+    @import "../sass/form.scss"
 </style>

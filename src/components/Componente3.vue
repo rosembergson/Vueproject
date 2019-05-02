@@ -1,6 +1,5 @@
 <template>
     <div class="componente3bg">
-            <h1> {{titule1}}</h1>
             <div>
                 <componente3slot>
                 <slot></slot>
@@ -27,5 +26,5 @@ export default {
 
 
 <style lang="scss">
-    
+    @import '../sass/componente3slot.scss'
 </style>
